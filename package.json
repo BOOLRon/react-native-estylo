@@ -1,0 +1,22 @@
+{
+  "name": "react-native-estylo",
+  "version": "0.0.1",
+  "description": "Library",	
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leoantongiovanni/react-native-estylo.git"
+  },
+  "author": {
+    "name": "Leonardo Antongiovanni",
+    "email": "leoantongiovanni@outlook.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "react-native": "^0.16.0"
+  },
+  "bugs": {
+    "url": "https://github.com/leoantongiovanni/react-native-estylo/issues"
+  },
+  "homepage": "https://github.com/leoantongiovanni/react-native-estylo"
+}
