@@ -1,29 +1,20 @@
 {
   "name": "react-native-estylo",
-  "version": "0.0.3",
-  "description": "",	
+  "version": "0.0.1",
+  "description": "Library",	
   "main": "index.js",
-  "scripts":{
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/leoantongiovanni/react-native-estylo.git"
+    "url": "https://github.com/leoantongiovanni/react-native-estylo.git"
   },
-  "keywords":[
-    "react-native",
-    "estylo",
-    "button",
-    "navbar",
-    "dimensions",
-    "ios",
-    "android"
-  ],
   "author": {
     "name": "Leonardo Antongiovanni",
     "email": "leoantongiovanni@outlook.com"
   },
   "license": "MIT",
+  "dependencies": {
+    "react-native": "^0.16.0"
+  },
   "bugs": {
     "url": "https://github.com/leoantongiovanni/react-native-estylo/issues"
   },
