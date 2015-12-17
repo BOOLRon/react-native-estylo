@@ -1,5 +1,5 @@
 import React from 'react-native';
-import Dimensions from './dimensions';
+import Dimensions from '/../dimensions';
 const {
   Component,
   TouchableOpacity,
@@ -20,12 +20,31 @@ class Button extends Component{
 	componentDidMount() {
 		var classButton = this.props.class || null,
 			styleButton = this.state._styleButton,
+			styleBorderButton =  null,
 			styleBackground = { backgroundColor: this.props.background || null },
 			styleText = this.state._styleText,
 			styleColor = { color: this.props.color || null };
 
+		
+		if( !styleBackground.background ){
+			if( styleColor.color ){
+				styleBorderButton = {
+					borderColor: styleColor.color,
+					borderWidth: 1,
+				};
+			}else{
+				styleBorderButton = {
+					borderColor: '#444444',
+					borderWidth: 1,
+				};
+			}
+		}
+
 		styleText = styleText ? [ styleText, styleColor ] : [ ButtonStyle[ 'button_text_' + classButton ], styleColor ];
-		styleButton = classButton ? [ ButtonStyle[ 'button_' + classButton ] , styleButton, styleBackground ] : [ ButtonStyle[ 'button_normal' ], styleButton, styleBackground ];
+		styleButton = classButton ? [ ButtonStyle[ 'button_' + classButton ] , styleBorderButton, styleButton, styleBackground ] : [ ButtonStyle[ 'button_normal' ], styleBorderButton, styleButton, styleBackground ];
+
+		console.log( styleText );
+		console.log( styleButton );
 
 		this.setState({
 			_styleButton: styleButton,
@@ -92,27 +111,33 @@ var ButtonStyle = StyleSheet.create({
 	/** Text **/
 	button_text_normal:{
 		fontSize: 16,
-		textAlign: 'center'
+		textAlign: 'center',
+		color: '#444444',
 	},
 	button_text_full:{
 		fontSize: 16,
 		textAlign: 'center',
+		color: '#444444',
 	},
 	button_text_small:{
 		fontSize: 12,
 		textAlign: 'center',
+		color: '#444444',
 	},
 	button_text_large:{
 		fontSize: 20,
 		textAlign: 'center',
+		color: '#444444',
 	},
 	button_text_outline:{
 		fontSize: 16,
 		textAlign: 'center',
+		color: '#444444',
 	},
 	button_text_clear:{
 		fontSize: 16,
 		textAlign: 'center',
+		color: '#444444',
 	}
 });
 
