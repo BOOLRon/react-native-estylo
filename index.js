@@ -1,8 +1,8 @@
+import Button from './components/button';
 import Dimensions from './dimensions';
-import Button from './button';
 
 module.exports = {
+	Button,
 	Dimensions,
-	Button
 };
 
