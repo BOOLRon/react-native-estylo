@@ -1,12 +1,23 @@
 {
   "name": "react-native-estylo",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Library Style",	
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/leoantongiovanni/react-native-estylo.git"
   },
+  "keywords": [
+    "react-native",
+    "react-component",
+    "ios",
+    "android",
+    "react-native-estylo",
+    "estylo",
+    "buttons",
+    "navbar",
+    "statusBarIos"
+  ],
   "author": {
     "name": "Leonardo Antongiovanni",
     "email": "leoantongiovanni@outlook.com"

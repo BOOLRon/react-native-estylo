@@ -18,6 +18,7 @@ import Estylo from 'react-native-estylo';
 
 ### Docs
 - [Buttons](#buttons)
+- [NavBar](#navbar)
 
 
 ## Buttons
@@ -27,7 +28,7 @@ Example:
 var ExampleApp = React.createClass({
   render: function() {
     return (
-        <View style={[ { flex: 1, alignItems: 'center' } ]}>
+        <View style = {[ { flex: 1, alignItems: 'center' } ]}>
           <Estylo.Button>
             Text button
           </Estylo.Button>
@@ -41,29 +42,23 @@ var ExampleApp = React.createClass({
 Larger or smaller buttons? Add `small`, `default`, `large`, `block`,or `full` for additional sizes.
 Example:
 ```jsx
-var ExampleApp = React.createClass({
-  render: function() {
-    return (
-        <View style={{ justifyContent: 'center', flex: 1, alignItems: 'center' }} >
-          <Estylo.Button size='small' backgroundColor='#286090' textColor="#fff" >
-            Size Small
-          </Estylo.Button>
-          <Estylo.Button size='default' >
-            Size Default
-          </Estylo.Button>
-          <Estylo.Button size='large' backgroundColor='#5cb85c' textColor='#fff' >
-            Size Large
-          </Estylo.Button>
-          <Estylo.Button size='block' backgroundColor='#f0ad4e' textColor='#fff' >
-            Size Block
-          </Estylo.Button>
-          <Estylo.Button size='full' backgroundColor='#d9534f' textColor='#fff' >
-            Size Full
-          </Estylo.Button>
-        </View>
-    );
-  }
-});
+<View style = {{ justifyContent: 'center', flex: 1, alignItems: 'center' }} >
+  <Estylo.Button size = 'small' backgroundColor = '#286090' textColor = "#fff" >
+    Size Small
+  </Estylo.Button>
+  <Estylo.Button size = 'default' >
+    Size Default
+  </Estylo.Button>
+  <Estylo.Button size = 'large' backgroundColor = '#5cb85c' textColor = '#fff' >
+    Size Large
+  </Estylo.Button>
+  <Estylo.Button size = 'block' backgroundColor = '#f0ad4e' textColor = '#fff' >
+    Size Block
+  </Estylo.Button>
+  <Estylo.Button size = 'full' backgroundColor = '#d9534f' textColor = '#fff' >
+    Size Full
+  </Estylo.Button>
+</View>
 ```
 ![react-native-estylo button_size demo](https://res.cloudinary.com/diypu5o0f/image/upload/v1451323089/button_size_g9vy8b.png)
 
@@ -71,7 +66,7 @@ var ExampleApp = React.createClass({
 To set the color of the button to add `backgroundColor`.
 Example:
 ```jsx
-<Estylo.Button size='default' backgroundColor='#286090' >
+<Estylo.Button size = 'default' backgroundColor = '#286090' >
   Button Background
 </Estylo.Button>
 ```
@@ -80,7 +75,7 @@ Example:
 To set the text color to add `textColor`.
 Example:
 ```jsx
-<Estylo.Button size='default' textColor='#286090' >
+<Estylo.Button size = 'default' textColor = '#286090' >
   Button Color
 </Estylo.Button>
 ```
@@ -89,7 +84,7 @@ Example:
 If you want to customize the button add `styleButton`.
 Example:
 ```jsx
-<Estylo.Button styleButton={{ borderColor:'#d9534f', borderWidth: 1, width: 100 }} >
+<Estylo.Button styleButton = {{ borderColor:'#d9534f', borderWidth: 1, width: 100 }} >
   Button Style
 </Estylo.Button>
 ```
@@ -98,7 +93,70 @@ Example:
 If you want to customize the text add `styleText`.
 Example:
 ```jsx
-<Estylo.Button styleText={{ fontSize: 30, textAlign:'right' }} >
+<Estylo.Button styleText = {{ fontSize: 30, textAlign:'right' }} >
   Button Style
 </Estylo.Button>
+```
+
+## NavBar
+To use the button insert `<Estylo.NavBar>`.
+Example:
+```jsx
+var ExampleApp = React.createClass({
+  render: function() {
+  
+    const titleLeftConfig = {
+      text: 'Back',
+      color: '#fff',
+      onPress: () => alert('Press Back'),
+    };
+    
+    const titleCenterConfig = {
+      text: 'Title',
+      color: '#fff',
+      onPress: () => alert('Press Title'),
+    };
+    
+    const titleRightConfig = {
+      text: 'Next',
+      color: '#fff',
+      onPress: () => alert('Press Next'),
+    };
+    
+    return (
+        <View style = {[ { flex: 1, alignItems: 'center' } ]}>
+          <Estylo.NavBar
+            titleLeft = { titleLeftConfig }
+            titleCenter = { titleCenterConfig }
+            titleRight = { titleRightConfig }
+            backgroundColor = '#2a8cd5' />
+        </View>
+    );
+  }
+});  
+```
+![react-native-estylo NavBar demo](https://res.cloudinary.com/diypu5o0f/image/upload/v1452183481/nav_bar_vzihkr.png)
+
+### titleLeftConfig / TitleCenterConfig / TitleRightConfig
+Here are the configurations for `titleLeftConfig`, `titleCenterConfig` and `titleRightConfig`:
+- text - ( String ) - Text Title.
+- color - ( String ) - Color Text.
+- onPress - ( Function ) - Function that is called on click.
+
+### StatusBarHidden
+To set Status Bar invisible add `statusBarHidden = { true }`.
+Example:
+```jsx
+<Estylo.NavBar
+  titleCenter = { titleCenterConfig }
+  statusBarHidden = { true } />
+```
+
+### BackgroundColor
+To set the color of the NavBar to add `backgroundColor`.
+Example:
+```jsx
+<Estylo.NavBar
+  titleCenter = { titleCenterConfig }
+  backgroundColor = '#a8cd5'/>
 ```
