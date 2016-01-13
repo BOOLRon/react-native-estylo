@@ -6,15 +6,23 @@ const statusBarHeight = 20;
 
 const {
   Component,
+  PropTypes,
   TouchableOpacity,
   Text,
-  TextInput,
   StyleSheet,
   StatusBarIOS,
   View,
 } = React;
 
 class NavBar extends Component{
+
+	static propTypes = {    
+		backgroundColor: PropTypes.string,
+		titleLeft: PropTypes.object,
+		titleCenter: PropTypes.object,
+		titleRight: PropTypes.object,
+  	};
+
 
 	getTitleNavBar( title, type ){
 		if( title ){
@@ -41,12 +49,8 @@ class NavBar extends Component{
 		const _statusBarStyle = this.props.statusBarHidden ? { height: 0 } : { height: statusBarHeight };
 		const _backgroundNavBar = this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : { backgroundColor: '#fff' } ;
 
-		if( this.props.statusBarHidden ){
-			StatusBarIOS.setHidden( true );
-		}else{
-			StatusBarIOS.setHidden( false );
-		}
-
+		this.props.statusBarHidden ? StatusBarIOS.setHidden( true ) : StatusBarIOS.setHidden( false );
+		
 		return(
 			<View style={[ NavBarStyle.navBar ]}>
 				<View style={[ _statusBarStyle, _backgroundNavBar ]}></View>
