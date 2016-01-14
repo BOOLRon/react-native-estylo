@@ -5,41 +5,62 @@ const navBarHeight = 44;
 const statusBarHeight = 20;
 
 const {
-  Component,
-  PropTypes,
-  TouchableOpacity,
-  Text,
-  StyleSheet,
-  StatusBarIOS,
-  View,
+	Component,
+	PropTypes,
+	TouchableOpacity,
+	Text,
+	StyleSheet,
+	StatusBarIOS,
+	View,
 } = React;
 
+const titleShape = {
+	color: PropTypes.string,
+	onPress: PropTypes.func,
+	onPressIn: PropTypes.func,
+	onPressOut: PropTypes.func,
+	onLongPress: PropTypes.func,
+	text: PropTypes.string,
+	style: PropTypes.object,
+};
+	
 class NavBar extends Component{
 
 	static propTypes = {    
 		backgroundColor: PropTypes.string,
-		titleLeft: PropTypes.object,
-		titleCenter: PropTypes.object,
-		titleRight: PropTypes.object,
-  	};
+		titleCenter: PropTypes.oneOfType([
+      		PropTypes.shape( titleShape ),
+      		PropTypes.element,
+    	]),
+		titleLeft: PropTypes.oneOfType([
+      		PropTypes.shape( titleShape ),
+      		PropTypes.element,
+    	]),
+		titleRight: PropTypes.oneOfType([
+      		PropTypes.shape( titleShape ),
+      		PropTypes.element,
+    	]),
+	};
 
 
 	getTitleNavBar( title, type ){
 		if( title ){
-
-			const _text = title.text ? title.text : null;
-			const _color = title.color ? title.color : '#000';
-			const _onPress = title.onPress ? title.onPress : null;
-			const _activeOpacity = _onPress ? 0 : 1;
+			const touchableProps = {
+            	onPress: title.onPress,
+            	onPressIn: title.onPressIn,
+            	onPressOut: title.onPressOut,
+            	onLongPress: title.onLongPress
+        	};
+			const _activeOpacity = !title.onPress && !title.onPressIn && !title.onPressOut && !title.onLongPress ? 1 : 0;
 
 			return(
 				<TouchableOpacity
 					style={[ type, NavBarStyle.buttonText ]}
-					onPress={ _onPress }
-					activeOpacity={ _activeOpacity } >
-						<Text style={[ NavBarStyle.titleText, { color: _color } ]}>
-							{ _text }
-						</Text>
+					activeOpacity={ _activeOpacity } 
+					{...touchableProps}>
+					<Text style={[ NavBarStyle.titleText, { color: title.color }, title.style ]}>
+						{ title.text }
+					</Text>
 				</TouchableOpacity>
 			)		
 		}
@@ -47,14 +68,12 @@ class NavBar extends Component{
 
 	render(){
 		const _statusBarStyle = this.props.statusBarHidden ? { height: 0 } : { height: statusBarHeight };
-		const _backgroundNavBar = this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : { backgroundColor: '#fff' } ;
-
 		this.props.statusBarHidden ? StatusBarIOS.setHidden( true ) : StatusBarIOS.setHidden( false );
 		
 		return(
 			<View style={[ NavBarStyle.navBar ]}>
-				<View style={[ _statusBarStyle, _backgroundNavBar ]}></View>
-				<View style={[ NavBarStyle.navBarContainer, _backgroundNavBar ]}>
+				<View style={[ _statusBarStyle, { backgroundColor: this.props.backgroundColor } ]}></View>
+				<View style={[ NavBarStyle.navBarContainer, { backgroundColor: this.props.backgroundColor } ]}>
 					{ this.getTitleNavBar( this.props.titleCenter,  NavBarStyle.buttonTextCenter )}
 					{ this.getTitleNavBar( this.props.titleLeft, NavBarStyle.buttonTextLeft )}
 					{ this.getTitleNavBar( this.props.titleRight, NavBarStyle.buttonTextRight )}
@@ -69,6 +88,7 @@ var NavBarStyle = StyleSheet.create({
 		width: Dimensions.getWidth(),
 	},
 	navBarContainer:{
+		backgroundColor: '#fff',
 		borderColor: '#c9c9c9',
 		borderBottomWidth: 1,
 		height: navBarHeight,
@@ -92,9 +112,9 @@ var NavBarStyle = StyleSheet.create({
 	},
 	titleText:{
 		fontSize: 17,
+		color: '#000'
 	}
 });
 
 
 module.exports = NavBar;
-
