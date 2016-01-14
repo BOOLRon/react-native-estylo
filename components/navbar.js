@@ -1,4 +1,3 @@
-'use strict';
 import React from 'react-native';
 import Dimensions from '/../dimensions';
 
@@ -24,23 +23,22 @@ class NavBar extends Component{
 		titleRight: PropTypes.object,
   	};
 
+
 	getTitleNavBar( title, type ){
 		if( title ){
-			const touchableProps = {
-      			onPress: title.onPress,
-      			onPressIn: title.onPressIn,
-      			onPressOut: title.onPressOut,
-      			onLongPress: title.onLongPress,
-    		};
-    		const _activeOpacity = !touchableProps.onPress && !touchableProps.onPressIn && !touchableProps.onPressOut && !touchableProps.onLongPress ? 1 : 0;
+
+			const _text = title.text ? title.text : null;
+			const _color = title.color ? title.color : '#000';
+			const _onPress = title.onPress ? title.onPress : null;
+			const _activeOpacity = _onPress ? 0 : 1;
 
 			return(
 				<TouchableOpacity
 					style={[ type, NavBarStyle.buttonText ]}
-					activeOpacity={ _activeOpacity }
-					{...touchableProps} >
-						<Text style={[ NavBarStyle.titleText, { color: title.color }, title.style ]}>
-							{ title.text }
+					onPress={ _onPress }
+					activeOpacity={ _activeOpacity } >
+						<Text style={[ NavBarStyle.titleText, { color: _color } ]}>
+							{ _text }
 						</Text>
 				</TouchableOpacity>
 			)		
@@ -49,12 +47,14 @@ class NavBar extends Component{
 
 	render(){
 		const _statusBarStyle = this.props.statusBarHidden ? { height: 0 } : { height: statusBarHeight };
-		this.props.statusBarHidden ? StatusBarIOS.setHidden( true ) : StatusBarIOS.setHidden( false );
+		const _backgroundNavBar = this.props.backgroundColor ? { backgroundColor: this.props.backgroundColor } : { backgroundColor: '#fff' } ;
 
+		this.props.statusBarHidden ? StatusBarIOS.setHidden( true ) : StatusBarIOS.setHidden( false );
+		
 		return(
 			<View style={[ NavBarStyle.navBar ]}>
-				<View style={[ _statusBarStyle, { backgroundColor: this.props.backgroundColor } ]}></View>
-				<View style={[ NavBarStyle.navBarContainer, { backgroundColor: this.props.backgroundColor } ]}>
+				<View style={[ _statusBarStyle, _backgroundNavBar ]}></View>
+				<View style={[ NavBarStyle.navBarContainer, _backgroundNavBar ]}>
 					{ this.getTitleNavBar( this.props.titleCenter,  NavBarStyle.buttonTextCenter )}
 					{ this.getTitleNavBar( this.props.titleLeft, NavBarStyle.buttonTextLeft )}
 					{ this.getTitleNavBar( this.props.titleRight, NavBarStyle.buttonTextRight )}
@@ -69,7 +69,6 @@ var NavBarStyle = StyleSheet.create({
 		width: Dimensions.getWidth(),
 	},
 	navBarContainer:{
-		backgroundColor: '#fff',
 		borderColor: '#c9c9c9',
 		borderBottomWidth: 1,
 		height: navBarHeight,
@@ -93,7 +92,6 @@ var NavBarStyle = StyleSheet.create({
 	},
 	titleText:{
 		fontSize: 17,
-		color: '#000',
 	}
 });
 

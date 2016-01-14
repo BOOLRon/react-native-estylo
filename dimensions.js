@@ -1,4 +1,3 @@
-'use strict';
 import React from 'react-native';
 import _Dimensions from '/../react-native/Libraries/Utilities/Dimensions';
 const {
