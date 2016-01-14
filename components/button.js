@@ -1,3 +1,4 @@
+'use strict';
 import React from 'react-native';
 import Dimensions from '/../dimensions';
 
@@ -19,6 +20,9 @@ class Button extends Component{
     styleButton: PropTypes.object,
     styleText: PropTypes.object,
     onPress: PropTypes.func,
+    onPressIn: PropTypes.func,
+    onPressOut: PropTypes.func,
+    onLongPress: PropTypes.func,
   };
 
 	render(){
@@ -27,14 +31,19 @@ class Button extends Component{
       button: null,
 			text: null,
     };
+    const touchableProps = {
+      onPress: this.props.onPress,
+      onPressIn: this.props.onPressIn,
+      onPressOut: this.props.onPressOut,
+      onLongPress: this.props.onLongPress,
+    };
 
 		_size.button = ButtonStyle[ 'button_size_' + this.props.size ] ? ButtonStyle[ 'button_size_' + this.props.size ] : ButtonStyle[ 'button_size_default' ];
 		_size.text = ButtonStyle[ 'text_size_' + this.props.size ] ? ButtonStyle[ 'text_size_' + this.props.size ] : ButtonStyle[ 'text_size_default' ];
     _size.button = !this.props.backgroundColor ? [ { borderColor: '#cccccc', borderWidth: 1 }, _size.button ] : _size.button;
-		
 	
 		return(
-			<TouchableOpacity style={[ _size.button, this.props.styleButton, { backgroundColor: this.props.backgroundColor } ]} onPress={ this.props.onPress } >
+			<TouchableOpacity style={[ _size.button, this.props.styleButton, { backgroundColor: this.props.backgroundColor } ]} {...touchableProps} >
 				<Text style={[ _size.text, this.props.styleText, { color: this.props.textColor } ]}>
 					{ this.props.children }
 				</Text>
