@@ -92,6 +92,7 @@ const buttonFactory = function({ React, Dimensions }) {
             onPressIn: func,
             onPressOut: func,
             textColor: string,
+            width: string,
             size: string,
             styleButton: object,
             styleText: object
@@ -111,11 +112,12 @@ const buttonFactory = function({ React, Dimensions }) {
                     border: !this.props.backgroundColor ? { borderColor: '#cccccc', borderWidth: 1 } : null,
                     button: styles['button_size_' + this.props.size] ? styles['button_size_' + this.props.size] : styles['button_size_default'],
                     text: styles['text_size_' + this.props.size] ? styles['text_size_' + this.props.size] : styles['text_size_default'],
+                    width: { width: Dimensions.calculationWidth( this.props.width ) }
                 };
 
                 return ( 
                     <TouchableOpacity 
-                        style = {[ _size.button, _size.border, this.props.styleButton, { backgroundColor: this.props.backgroundColor } ]}
+                        style = {[ _size.button, _size.border, _size.width, this.props.styleButton, { backgroundColor: this.props.backgroundColor } ]}
                         {...touchableProps} >
                         <Text style = {[ _size.text, this.props.styleText, { color: this.props.textColor } ]}> 
                             { this.props.children } 
