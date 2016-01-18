@@ -71,6 +71,15 @@ Example:
 </Estylo.Button>
 ```
 
+### Width
+To set the length of the button use 'width', you can set it with a percentage or a fixed number.
+Example:
+```jsx
+<Estylo.Button size = 'default' width = '30%'
+  Button Width
+</Estylo.Button>
+```
+
 ### TextColor
 To set the text color to add `textColor`.
 Example:
