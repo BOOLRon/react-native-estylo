@@ -141,7 +141,11 @@ var ExampleApp = React.createClass({
 Here are the configurations for `titleLeftConfig`, `titleCenterConfig` and `titleRightConfig`:
 - text - ( String ) - Text Title.
 - color - ( String ) - Color Text.
-- onPress - ( Function ) - Function that is called on click.
+- onPress - ( Function ) - Function that is called onPress.
+- onPressIn - ( Function ) - Function that is called onPressIn.
+- onPressOut - ( Function ) - Function that is called onPressOut.
+- onLongPress - ( Function ) - Function that is called onLongPress.
+- style - ( Object, Array ) - Style object or array of style objects.
 
 ### StatusBarHidden
 To set Status Bar invisible add `statusBarHidden = { true }`.
