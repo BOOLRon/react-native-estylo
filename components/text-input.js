@@ -87,13 +87,20 @@ const textInputFactory = function ({ React, Dimensions }) {
 
 
     return function _TextInput( props ) {
+        _TextInput.PropTypes = {
+            class: string,
+            label: string,
+            onChangeText: func,
+            placeholder: string,
+            value: string
+        };
 
         return {
             props,
 
             setText( value ) {
                 try {
-                    return props.onChangeTextValue(value);
+                    return props.onChangeText(value);
                 } catch (_error) {}
             },
 

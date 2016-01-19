@@ -1,6 +1,6 @@
 {
   "name": "react-native-estylo",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Graphics library to improve programming with React-Native",	
   "main": "index.js",
   "repository": {
