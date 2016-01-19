@@ -1,6 +1,6 @@
 {
   "name": "react-native-estylo",
-  "version": "0.1.5",
+  "version": "0.2.0",
   "description": "Graphics library to improve programming with React-Native",	
   "main": "index.js",
   "repository": {
@@ -16,6 +16,9 @@
     "estylo",
     "buttons",
     "navbar",
+    "textinput",
+    "input",
+    "text",
     "statusBarIos"
   ],
   "author": {
