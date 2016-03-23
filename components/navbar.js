@@ -2,7 +2,7 @@ const navBarFactory = function ({ React, Dimensions }) {
     const {
         TouchableOpacity,
         Text,
-        StatusBarIOS,
+        StatusBar,
         View,
     } = React;
     const {
@@ -106,7 +106,7 @@ const navBarFactory = function ({ React, Dimensions }) {
 
             render() {
                 const _statusBarStyle = this.props.statusBarHidden ? { height: 0 } : { height: statusBarHeight };
-                this.props.statusBarHidden ? StatusBarIOS.setHidden(true) : StatusBarIOS.setHidden(false);
+                this.props.statusBarHidden ? StatusBar.setHidden(true) : StatusBar.setHidden(false);
 
                 return (
                     <View style = { styles.navBar } >
