@@ -1,4 +1,4 @@
-import _Dimensions from '/../react-native/Libraries/Utilities/Dimensions';
+import _Dimensions from './../react-native/Libraries/Utilities/Dimensions';
 
 const Dimensions = {
 		getWidth: function(){
