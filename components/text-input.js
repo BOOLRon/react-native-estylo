@@ -1,11 +1,11 @@
-const textInputFactory = function ({ React, Dimensions }) {
+const textInputFactory = function ({ React, ReactNative, Dimensions }) {
     const {
         TouchableOpacity,
         Text,
         TextInput,
         StatusBarIOS,
         View,
-    } = React;
+    } = ReactNative;
     const {
         func,
         object,
@@ -105,8 +105,8 @@ const textInputFactory = function ({ React, Dimensions }) {
             },
 
             render() {
-                const _styleView = styles[ "view_" + this.props.class ]; 
-                const _styleText = styles[ "text_" + this.props.class ]; 
+                const _styleView = styles[ "view_" + this.props.class ];
+                const _styleText = styles[ "text_" + this.props.class ];
                 const _styleTextInput = styles[ "textInput_" + this.props.class ];
 
                 return(

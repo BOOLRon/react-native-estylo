@@ -1,10 +1,10 @@
-const navBarFactory = function ({ React, Dimensions }) {
+const navBarFactory = function ({ React, ReactNative, Dimensions }) {
     const {
         TouchableOpacity,
         Text,
         StatusBar,
         View,
-    } = React;
+    } = ReactNative;
     const {
         func,
         object,
@@ -92,11 +92,11 @@ const navBarFactory = function ({ React, Dimensions }) {
                     };
                     const _activeOpacity = !title.onPress && !title.onPressIn && !title.onPressOut && !title.onLongPress ? 1 : 0;
 
-                    return ( 
+                    return (
                         <TouchableOpacity style = {[ type, styles.buttonText ]}
-                            activeOpacity = { _activeOpacity } 
+                            activeOpacity = { _activeOpacity }
                             {...touchableProps }>
-                            <Text style = {[ styles.titleText, { color: title.color }, title.style ]}> 
+                            <Text style = {[ styles.titleText, { color: title.color }, title.style ]}>
                                 { title.text }
                             </Text>
                         </TouchableOpacity>

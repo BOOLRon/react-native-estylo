@@ -1,10 +1,10 @@
-const buttonFactory = function({ React, Dimensions }) {
-    const { 
+const buttonFactory = function({ React,ReactNative, Dimensions }) {
+    const {
         TouchableOpacity,
         Text,
         StatusBarIOS,
         View,
-    } = React;
+    } = ReactNative;
     const {
         func,
         object,
@@ -115,12 +115,12 @@ const buttonFactory = function({ React, Dimensions }) {
                     width: { width: Dimensions.calculationWidth( this.props.width ) }
                 };
 
-                return ( 
-                    <TouchableOpacity 
+                return (
+                    <TouchableOpacity
                         style = {[ _size.button, _size.border, _size.width, this.props.styleButton, { backgroundColor: this.props.backgroundColor } ]}
                         {...touchableProps} >
-                        <Text style = {[ _size.text, this.props.styleText, { color: this.props.textColor } ]}> 
-                            { this.props.children } 
+                        <Text style = {[ _size.text, this.props.styleText, { color: this.props.textColor } ]}>
+                            { this.props.children }
                         </Text>
                     </TouchableOpacity>
                 )
