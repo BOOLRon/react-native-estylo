@@ -1,6 +1,6 @@
 /** Components **/
 import ReactNative from 'react-native';
-import React form 'react';
+import React from 'react';
 import Dimensions from './dimensions';
 
 import buttonFactory from './components/button';
